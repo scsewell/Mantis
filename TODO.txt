@@ -1,0 +1,39 @@
+//--BUILD--
+Create build script
+
+//--GENERAL--
+Logging
+Memory Allocator
+    * aligned allocator
+    * single thread and multi-thread variants
+    * override new/delete
+    * debug info/tagging
+Alignment Specifier
+Enum Flags
+
+Application
+Time
+Input
+Screen (Get resolutions, fullscreen mode)
+Math
+Random (Make thread safe)
+Noise
+Curve
+Serialization (binary, json/xml)
+Profiler
+ECS
+Parallelization
+
+//--GEOMERTRY--
+Color
+Vectors
+Matricies
+Quaterion
+Planes
+Bounding Boxes
+Ray
+Rect
+
+//--RENDERER--
+static buffer (clear buffer from client when uploaded)
+debug drawing (use one buffer with all lines for the frame)
