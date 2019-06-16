@@ -87,7 +87,7 @@ namespace Mantis
         const eastl::vector<Attachment>& GetAttachments() const { return m_attachments; }
 
         /// <summary>
-        /// Gets the types of all subpasses for this render stage.
+        /// Gets the subpasses for this render stage.
         /// </summary>
         const eastl::vector<Subpass>& GetSubpasses() const { return m_subpasses; }
 

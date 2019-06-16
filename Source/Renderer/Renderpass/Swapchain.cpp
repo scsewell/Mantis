@@ -24,7 +24,6 @@ namespace Mantis
         m_imageCount(0),
         m_preTransform(VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR),
         m_compositeAlpha(VK_COMPOSITE_ALPHA_OPAQUE_BIT_KHR),
-        m_fenceImage(VK_NULL_HANDLE),
         m_activeImageIndex(std::numeric_limits<uint32_t>::max())
     {
         auto surface = window->GetSurface();
@@ -39,10 +38,6 @@ namespace Mantis
         CreateImageViews(surface);
 
         auto logicalDevice = Renderer::Get()->GetLogicalDevice();
-
-        VkFenceCreateInfo fenceCreateInfo = {};
-        fenceCreateInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
-        vkCreateFence(*logicalDevice, &fenceCreateInfo, nullptr, &m_fenceImage);
     }
 
     Swapchain::~Swapchain()
@@ -55,10 +50,7 @@ namespace Mantis
         {
             vkDestroyImageView(*logicalDevice, imageView, nullptr);
         }
-
-        vkDestroyFence(*logicalDevice, m_fenceImage, nullptr);
     }
-
 
     void Swapchain::ChooseExtent(const VkSurfaceCapabilitiesKHR& capabilities, const Vector2Int& targetResolution)
     {
@@ -281,9 +273,6 @@ namespace Mantis
                 Logger::ErrorT(LOG_TAG, "Failed to acquire swapchain image!");
                 break;
         }
-
-        //Renderer::CheckVk(vkWaitForFences(*logicalDevice, 1, &m_fenceImage, VK_TRUE, std::numeric_limits<uint64_t>::max()));
-        //Renderer::CheckVk(vkResetFences(*logicalDevice, 1, &m_fenceImage));
 
         return result;
     }

@@ -24,8 +24,6 @@ namespace Mantis
 
         ~Framebuffers();
 
-        const eastl::vector<eastl::unique_ptr<Image2d>>& GetImageAttachments() const { return m_imageAttachments; }
-
         Image2d* GetAttachment(const uint32_t& index) const { return m_imageAttachments[index].get(); }
 
         const eastl::vector<VkFramebuffer>& GetFramebuffers() const { return m_framebuffers; }

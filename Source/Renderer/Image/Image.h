@@ -9,7 +9,7 @@ namespace Mantis
     /**
      * @brief A representation of a Vulkan image, sampler, and view.
      */
-    class Texture :
+    class Image :
         public Descriptor
     {
     public:
@@ -25,18 +25,35 @@ namespace Mantis
          * @param mipLevels The number of levels of detail available for minified sampling of the image.
          * @param arrayLayers The number of layers in the image.
          */
-        Texture(const VkExtent3D& extent, const VkImageType& imageType, const VkFormat& format, const VkSampleCountFlagBits& samples, const VkImageTiling& tiling,
-            const VkImageUsageFlags& usage, const VkMemoryPropertyFlags& properties, const uint32_t& mipLevels, const uint32_t& arrayLayers);
+        Image(
+            const VkExtent3D& extent,
+            const VkImageType& imageType,
+            const VkFormat& format,
+            const VkSampleCountFlagBits& samples,
+            const VkImageTiling& tiling,
+            const VkImageUsageFlags& usage,
+            const VkMemoryPropertyFlags& properties,
+            const uint32_t& mipLevels,
+            const uint32_t& arrayLayers
+        );
 
         /*const VkFilter &filter, const VkSamplerAddressMode &addressMode, const bool &anisotropic,
         const VkImageViewType &viewType, const VkImageAspectFlags &imageAspect, const uint32_t &baseMipLevel, const uint32_t &baseArrayLayer*/
 
-        ~Texture();
+        ~Image();
 
-        static VkDescriptorSetLayoutBinding GetDescriptorSetLayout(const uint32_t& binding, const VkDescriptorType& descriptorType, const VkShaderStageFlags& stage,
-            const uint32_t& count);
+        static VkDescriptorSetLayoutBinding GetDescriptorSetLayout(
+            const uint32_t& binding,
+            const VkDescriptorType& descriptorType,
+            const VkShaderStageFlags& stage,
+            const uint32_t& count
+        );
 
-        WriteDescriptorSet GetWriteDescriptor(const uint32_t& binding, const VkDescriptorType& descriptorType, const eastl::optional<OffsetSize>& offsetSize) const override;
+        WriteDescriptorSet GetWriteDescriptor(
+            const uint32_t& binding,
+            const VkDescriptorType& descriptorType, 
+            const eastl::optional<OffsetSize>& offsetSize
+        ) const override;
 
         /**
          * Copies the images pixels from memory.

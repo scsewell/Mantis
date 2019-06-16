@@ -11,7 +11,7 @@ namespace Mantis
 {
     RenderStage::RenderStage(
         eastl::vector<Attachment> images,
-        eastl::vector<SubpassType> subpasses,
+        eastl::vector<Subpass> subpasses,
         const Viewport& viewport
     ) :
         m_attachments(eastl::move(images)),
@@ -35,9 +35,12 @@ namespace Mantis
 
                     for (const auto& subpass : m_subpasses)
                     {
-                        auto subpassBindings = subpass.GetAttachmentBindings();
+                        auto attachmentRefs = subpass.GetAttachmentRefs();
 
-                        if (eastl::find(subpassBindings.begin(), subpassBindings.end(), attachment.GetBinding()) != subpassBindings.end())
+                        if (eastl::find(attachmentRefs.begin(), attachmentRefs.end(), [&attachment](const AttachmentRef& attachmentRef) 
+                            {
+                                return attachment.GetBinding() == attachmentRef.binding;
+                            }) != attachmentRefs.end())
                         {
                             m_subpassAttachmentCount[subpass.GetBinding()]++;
 

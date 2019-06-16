@@ -37,9 +37,6 @@
     <Filter Include="Source\Renderer\Renderpass">
       <UniqueIdentifier>{bcaece3a-e403-435f-813e-92bbec09a2bb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Renderer\Texture">
-      <UniqueIdentifier>{66575a83-fea8-4df6-9585-1ca301012e1e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Renderer\Descriptor">
       <UniqueIdentifier>{9a7edb7f-3be9-4ad4-9bdc-ce53cd9e889c}</UniqueIdentifier>
     </Filter>
@@ -54,6 +51,9 @@
     </Filter>
     <Filter Include="Source\Renderer\Pipeline\Shader">
       <UniqueIdentifier>{4b2050b1-ec00-47a7-b761-3ac409e2119a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Image">
+      <UniqueIdentifier>{66575a83-fea8-4df6-9585-1ca301012e1e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -129,9 +129,6 @@
     <ClInclude Include="Source\Renderer\Renderer.h">
       <Filter>Source\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Renderer\Texture\Texture.h">
-      <Filter>Source\Renderer\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Renderer\Renderpass\Framebuffer.h">
       <Filter>Source\Renderer\Renderpass</Filter>
     </ClInclude>
@@ -189,6 +186,9 @@
     <ClInclude Include="Source\Renderer\Renderpass\Subpass.h">
       <Filter>Source\Renderer\Renderpass</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Renderer\Image\Image.h">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\stdafx.cpp">
@@ -232,9 +232,6 @@
     </ClCompile>
     <ClCompile Include="Source\Renderer\Renderer.cpp">
       <Filter>Source\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Renderer\Texture\Texture.cpp">
-      <Filter>Source\Renderer\Texture</Filter>
     </ClCompile>
     <ClCompile Include="Source\Renderer\Renderpass\Framebuffer.cpp">
       <Filter>Source\Renderer\Renderpass</Filter>
@@ -280,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="Source\Renderer\Renderpass\Subpass.cpp">
       <Filter>Source\Renderer\Renderpass</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Image\Image.cpp">
+      <Filter>Source\Renderer\Image</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

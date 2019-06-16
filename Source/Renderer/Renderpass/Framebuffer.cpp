@@ -9,8 +9,16 @@
 
 namespace Mantis
 {
-    Framebuffers::Framebuffers(const Vector2Int& extent, const RenderStage& renderStage, const Renderpass& renderPass, const Swapchain& swapchain, const ImageDepth& depthStencil,
-        const VkSampleCountFlagBits& samples)
+    Framebuffers::Framebuffers(
+        const Vector2Int& extent,
+        const RenderStage& renderStage,
+        const Renderpass& renderPass,
+        const Swapchain& swapchain,
+        const ImageDepth& depthStencil,
+        const VkSampleCountFlagBits& samples
+    ) : 
+        m_imageAttachments({}),
+        m_framebuffers({})
     {
         auto logicalDevice = Renderer::Get()->GetLogicalDevice();
 

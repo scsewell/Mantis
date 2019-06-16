@@ -57,12 +57,6 @@ namespace Mantis
         }
 
         /// <summary>
-        /// Gest the number of images in the swapchain.
-        /// </summary>
-        /// <returns></returns>
-        const uint32_t& GetImageCount() const { return m_imageCount; }
-
-        /// <summary>
         /// Gets the transformation applied to the swapchain images on presentation.
         /// </summary>
         const VkSurfaceTransformFlagsKHR& GetPreTransform() const { return m_preTransform; }
@@ -78,9 +72,9 @@ namespace Mantis
         const eastl::vector<VkImage>& GetImages() const { return m_images; }
 
         /// <summary>
-        /// Gets the currently active image in the swapchain.
+        /// Gest the number of images in the swapchain.
         /// </summary>
-        const VkImage& GetActiveImage() const { return m_images[m_activeImageIndex]; }
+        const uint32_t& GetImageCount() const { return m_imageCount; }
 
         /// <summary>
         /// Gets the image view for all images in the swapchain.
@@ -91,6 +85,11 @@ namespace Mantis
         /// Gets the active image index.
         /// </summary>
         const uint32_t& GetActiveImageIndex() const { return m_activeImageIndex; }
+
+        /// <summary>
+        /// Gets the currently active image in the swapchain.
+        /// </summary>
+        const VkImage& GetActiveImage() const { return m_images[m_activeImageIndex]; }
 
     private:
 
@@ -112,13 +111,12 @@ namespace Mantis
 
         VkExtent2D m_extent;
         VkPresentModeKHR m_presentMode;
-        uint32_t m_imageCount;
         VkSurfaceTransformFlagsKHR m_preTransform;
         VkCompositeAlphaFlagBitsKHR m_compositeAlpha;
+        uint32_t m_imageCount;
         eastl::vector<VkImage> m_images;
         eastl::vector<VkImageView> m_imageViews;
 
-        VkFence m_fenceImage;
         uint32_t m_activeImageIndex;
     };
 }
