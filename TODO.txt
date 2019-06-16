@@ -2,14 +2,11 @@
 Create build script
 
 //--GENERAL--
-Logging
 Memory Allocator
     * aligned allocator
     * single thread and multi-thread variants
     * override new/delete
     * debug info/tagging
-Alignment Specifier
-Enum Flags
 
 Application
 Time

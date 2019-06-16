@@ -9,6 +9,7 @@
 #   define WINVER 0x0601
 #   define _WIN32_WINNT 0x0601
 #   define WIN32_LEAN_AND_MEAN         // exclude rarely-used stuff from Windows headers
+#   define _CRT_SECURE_NO_WARNINGS     // don't use windows specific safe versions of functions
 #   include <Windows.h>
 #endif
 
@@ -19,7 +20,6 @@
 // configure EASTL library
 #define _SILENCE_CXX17_NEGATORS_DEPRECATION_WARNING
 #define EASTL_USER_CONFIG_HEADER "EASTLConfig.h"
-
 #include <EABase/eabase.h>
 
 // configure the math libary
@@ -27,3 +27,4 @@
 #define EIGEN_FAST_MATH  1
 #include <Eigen/Core>
 #include <Eigen/Geometry>
+

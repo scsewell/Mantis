@@ -13,6 +13,48 @@
     <Filter Include="Source\Utils\Logging">
       <UniqueIdentifier>{5261cb96-4f2e-42b3-8d7b-b06c85f12f8d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Utils\Platform">
+      <UniqueIdentifier>{bcfce382-ad9e-4b61-94be-eb8e1f6e9cce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Utils\Geometry">
+      <UniqueIdentifier>{8573b56d-8d29-4af0-9305-0e689c5079ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Device">
+      <UniqueIdentifier>{854c031d-0bbe-42b4-ab99-6fa2d71cd57b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Device\Window">
+      <UniqueIdentifier>{db2672d7-1e26-4f4a-895c-fb295ea961f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Device\Monitor">
+      <UniqueIdentifier>{d79fccdf-6e91-4471-b83f-66f19eb19ff3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Device\Graphics">
+      <UniqueIdentifier>{be86011b-0b8e-4c61-abe2-90c004d36217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer">
+      <UniqueIdentifier>{fac9bacd-3577-4256-8282-a744d9a77f66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Renderpass">
+      <UniqueIdentifier>{bcaece3a-e403-435f-813e-92bbec09a2bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Texture">
+      <UniqueIdentifier>{66575a83-fea8-4df6-9585-1ca301012e1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Descriptor">
+      <UniqueIdentifier>{9a7edb7f-3be9-4ad4-9bdc-ce53cd9e889c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Buffer">
+      <UniqueIdentifier>{64c3e960-4ce1-4158-b7f6-cd20ca642cb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Commands">
+      <UniqueIdentifier>{d4661014-2196-460d-9382-3c345d3af185}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Pipeline">
+      <UniqueIdentifier>{3916cc84-3882-436f-807c-75ca8a5f4108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Pipeline\Shader">
+      <UniqueIdentifier>{4b2050b1-ec00-47a7-b761-3ac409e2119a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Platform.h">
@@ -33,6 +75,120 @@
     <ClInclude Include="Source\Utils\Logging\Logger.h">
       <Filter>Source\Utils\Logging</Filter>
     </ClInclude>
+    <ClInclude Include="Source\IO\FileStream.h">
+      <Filter>Source\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\EnumFlags.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Platform\WindowsUtils.h">
+      <Filter>Source\Utils\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Geometry\Vector2.h">
+      <Filter>Source\Utils\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Geometry\VectorMath.h">
+      <Filter>Source\Utils\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Device\Window\Window.h">
+      <Filter>Source\Device\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Geometry\Vector2Int.h">
+      <Filter>Source\Utils\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Device\Monitor\Monitor.h">
+      <Filter>Source\Device\Monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Geometry\RectInt.h">
+      <Filter>Source\Utils\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Geometry\Rect.h">
+      <Filter>Source\Utils\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\NonCopyable.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Delegate.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Device\Graphics\Instance.h">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Device\Graphics\PhysicalDevice.h">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Device\Graphics\LogicalDevice.h">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Device\Graphics\Surface.h">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Renderpass\Swapchain.h">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Renderer.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Texture\Texture.h">
+      <Filter>Source\Renderer\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Renderpass\Framebuffer.h">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Descriptor\Descriptor.h">
+      <Filter>Source\Renderer\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Descriptor\DescriptorSet.h">
+      <Filter>Source\Renderer\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Descriptor\DescriptorsHandler.h">
+      <Filter>Source\Renderer\Descriptor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Buffer\Buffer.h">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Buffer\UniformBuffer.h">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Buffer\StorageBuffer.h">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Commands\CommandBuffer.h">
+      <Filter>Source\Renderer\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Commands\CommandPool.h">
+      <Filter>Source\Renderer\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Pipeline\Shader\Shader.h">
+      <Filter>Source\Renderer\Pipeline\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Pipeline\Pipeline.h">
+      <Filter>Source\Renderer\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Pipeline\GraphicsPipeline.h">
+      <Filter>Source\Renderer\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Pipeline\ComputePipeline.h">
+      <Filter>Source\Renderer\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Timer.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\RenderStage.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Geometry\Color.h">
+      <Filter>Source\Utils\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Renderpass\Renderpass.h">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Renderpass\Attachment.h">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Renderpass\Subpass.h">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\stdafx.cpp">
@@ -44,8 +200,98 @@
     <ClCompile Include="Source\Utils\Logging\Logger.cpp">
       <Filter>Source\Utils\Logging</Filter>
     </ClCompile>
+    <ClCompile Include="Source\IO\FileStream.cpp">
+      <Filter>Source\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils\Platform\WindowsUtils.cpp">
+      <Filter>Source\Utils\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Device\Window\Window.cpp">
+      <Filter>Source\Device\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Device\Monitor\Monitor.cpp">
+      <Filter>Source\Device\Monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Device\Graphics\Instance.cpp">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Device\Graphics\PhysicalDevice.cpp">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Device\Graphics\LogicalDevice.cpp">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Device\Graphics\Surface.cpp">
+      <Filter>Source\Device\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Renderpass\Swapchain.cpp">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Renderer.cpp">
+      <Filter>Source\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Texture\Texture.cpp">
+      <Filter>Source\Renderer\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Renderpass\Framebuffer.cpp">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Descriptor\DescriptorSet.cpp">
+      <Filter>Source\Renderer\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Descriptor\DescriptorsHandler.cpp">
+      <Filter>Source\Renderer\Descriptor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Buffer\Buffer.cpp">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Buffer\UniformBuffer.cpp">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Buffer\StorageBuffer.cpp">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Commands\CommandBuffer.cpp">
+      <Filter>Source\Renderer\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Commands\CommandPool.cpp">
+      <Filter>Source\Renderer\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Pipeline\Shader\Shader.cpp">
+      <Filter>Source\Renderer\Pipeline\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Pipeline\GraphicsPipeline.cpp">
+      <Filter>Source\Renderer\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Pipeline\ComputePipeline.cpp">
+      <Filter>Source\Renderer\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils\Tiner.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\RenderStage.cpp">
+      <Filter>Source\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Renderpass\Renderpass.cpp">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Renderpass\Subpass.cpp">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Source\Utils\Geometry\Vector2.inl">
+      <Filter>Source\Utils\Geometry</Filter>
+    </None>
+    <None Include="Source\Utils\Geometry\Vector2Int.inl">
+      <Filter>Source\Utils\Geometry</Filter>
+    </None>
+    <None Include="Source\Utils\Geometry\Color.inl">
+      <Filter>Source\Utils\Geometry</Filter>
+    </None>
   </ItemGroup>
 </Project>

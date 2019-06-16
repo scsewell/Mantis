@@ -4,6 +4,8 @@
 
 namespace Mantis
 {
+    class FileStream;
+
     /// <summary>
     /// Formats and outputs useful debugging information.
     /// </summary>
@@ -21,15 +23,14 @@ namespace Mantis
         /// </summary>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Debug(const String& format, Args&& ... args);
+        static void DebugF(const String format, ...);
 
         /// <summary>
         /// Logs a debug message. Only has an effect on debug builds.
         /// </summary>
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="message">The message to log.</param>
-        static void Debug(const String& tag, const String& message);
+        static void DebugT(const String& tag, const String& message);
 
         /// <summary>
         /// Logs a debug message. Only has an effect on debug builds.
@@ -37,8 +38,7 @@ namespace Mantis
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Debug(const String& tag, const String& format, Args&& ... args);
+        static void DebugTF(const String& tag, const String format, ...);
 
         /// <summary>
         /// Logs an info message.
@@ -51,15 +51,14 @@ namespace Mantis
         /// </summary>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Info(const String& format, Args&& ... args);
+        static void InfoF(const String format, ...);
 
         /// <summary>
         /// Logs an info message.
         /// </summary>
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="message">The message to log.</param>
-        static void Info(const String& tag, const String& message);
+        static void InfoT(const String& tag, const String& message);
 
         /// <summary>
         /// Logs an info message.
@@ -67,8 +66,7 @@ namespace Mantis
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Info(const String& tag, const String& format, Args&& ... args);
+        static void InfoTF(const String& tag, const String format, ...);
 
         /// <summary>
         /// Logs a warning message.
@@ -81,15 +79,14 @@ namespace Mantis
         /// </summary>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Warning(const String& format, Args&& ... args);
+        static void WarningF(const String format, ...);
 
         /// <summary>
         /// Logs a warning message.
         /// </summary>
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="message">The message to log.</param>
-        static void Warning(const String& tag, const String& message);
+        static void WarningT(const String& tag, const String& message);
 
         /// <summary>
         /// Logs a warning message.
@@ -97,8 +94,7 @@ namespace Mantis
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Warning(const String& tag, const String& format, Args&& ... args);
+        static void WarningTF(const String& tag, const String format, ...);
 
         /// <summary>
         /// Logs an error message.
@@ -111,15 +107,14 @@ namespace Mantis
         /// </summary>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Error(const String& format, Args&& ... args);
+        static void ErrorF(const String format, ...);
 
         /// <summary>
         /// Logs an error message.
         /// </summary>
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="message">The message to log.</param>
-        static void Error(const String& tag, const String& message);
+        static void ErrorT(const String& tag, const String& message);
 
         /// <summary>
         /// Logs an error message.
@@ -127,8 +122,7 @@ namespace Mantis
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static void Error(const String& tag, const String& format, Args&& ... args);
+        static void ErrorTF(const String& tag, const String format, ...);
 
     private:
         /// <summary>
@@ -146,13 +140,15 @@ namespace Mantis
         /// <param name="tag">A short description of the message source.</param>
         /// <param name="format">The formatting of the arguments.</param>
         /// <param name="args">The arguments to format.</param>
-        template<typename... Args>
-        static String Append(const String& level, const String& tag, const String& format, Args&& ... args);
+        static String Append(const String& level, const String& tag, const String& format, va_list args);
 
         /// <summary>
         /// Writes out the message.
         /// </summary>
         /// <param name="message">The message to log.</param>
         static void Write(const String& message);
+
+        static eastl::shared_ptr<FileStream> s_logStream;
+        static std::mutex s_writeLock;
     };
 }

@@ -19,15 +19,78 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Renderer\Renderpass\Attachment.h" />
+    <ClInclude Include="Source\Device\Graphics\Instance.h" />
+    <ClInclude Include="Source\Device\Graphics\LogicalDevice.h" />
+    <ClInclude Include="Source\Device\Graphics\PhysicalDevice.h" />
+    <ClInclude Include="Source\Device\Graphics\Surface.h" />
+    <ClInclude Include="Source\Device\Monitor\Monitor.h" />
+    <ClInclude Include="Source\Device\Window\Window.h" />
+    <ClInclude Include="Source\Renderer\Buffer\Buffer.h" />
+    <ClInclude Include="Source\Renderer\Buffer\StorageBuffer.h" />
+    <ClInclude Include="Source\Renderer\Buffer\UniformBuffer.h" />
+    <ClInclude Include="Source\Renderer\Commands\CommandBuffer.h" />
+    <ClInclude Include="Source\Renderer\Commands\CommandPool.h" />
+    <ClInclude Include="Source\Renderer\Descriptor\Descriptor.h" />
+    <ClInclude Include="Source\Renderer\Descriptor\DescriptorSet.h" />
+    <ClInclude Include="Source\Renderer\Descriptor\DescriptorsHandler.h" />
+    <ClInclude Include="Source\Renderer\Pipeline\ComputePipeline.h" />
+    <ClInclude Include="Source\Renderer\Pipeline\GraphicsPipeline.h" />
+    <ClInclude Include="Source\Renderer\Pipeline\Pipeline.h" />
+    <ClInclude Include="Source\Renderer\Pipeline\Shader\Shader.h" />
+    <ClInclude Include="Source\Renderer\Renderer.h" />
+    <ClInclude Include="Source\Renderer\Renderpass\Framebuffer.h" />
+    <ClInclude Include="Source\Renderer\Renderpass\Renderpass.h" />
+    <ClInclude Include="Source\Renderer\Renderpass\Subpass.h" />
+    <ClInclude Include="Source\Renderer\Renderpass\Swapchain.h" />
+    <ClInclude Include="Source\Renderer\RenderStage.h" />
+    <ClInclude Include="Source\Renderer\Texture\Texture.h" />
+    <ClInclude Include="Source\Utils\Delegate.h" />
+    <ClInclude Include="Source\Utils\EnumFlags.h" />
+    <ClInclude Include="Source\IO\FileStream.h" />
     <ClInclude Include="Source\Mantis.h" />
     <ClInclude Include="Source\EASTLConfig.h" />
     <ClInclude Include="Source\IO\Filesystem.h" />
     <ClInclude Include="Source\stdafx.h" />
     <ClInclude Include="Source\Platform.h" />
+    <ClInclude Include="Source\Utils\Geometry\Color.h" />
+    <ClInclude Include="Source\Utils\Geometry\Rect.h" />
+    <ClInclude Include="Source\Utils\Geometry\RectInt.h" />
+    <ClInclude Include="Source\Utils\Geometry\Vector2.h" />
+    <ClInclude Include="Source\Utils\Geometry\Vector2Int.h" />
+    <ClInclude Include="Source\Utils\Geometry\VectorMath.h" />
     <ClInclude Include="Source\Utils\Logging\Logger.h" />
+    <ClInclude Include="Source\Utils\NonCopyable.h" />
+    <ClInclude Include="Source\Utils\Platform\WindowsUtils.h" />
+    <ClInclude Include="Source\Utils\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Device\Graphics\Instance.cpp" />
+    <ClCompile Include="Source\Device\Graphics\LogicalDevice.cpp" />
+    <ClCompile Include="Source\Device\Graphics\PhysicalDevice.cpp" />
+    <ClCompile Include="Source\Device\Graphics\Surface.cpp" />
+    <ClCompile Include="Source\Device\Monitor\Monitor.cpp" />
+    <ClCompile Include="Source\Device\Window\Window.cpp" />
+    <ClCompile Include="Source\IO\FileStream.cpp" />
     <ClCompile Include="Source\IO\Filesystem.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\Renderer\Buffer\Buffer.cpp" />
+    <ClCompile Include="Source\Renderer\Buffer\StorageBuffer.cpp" />
+    <ClCompile Include="Source\Renderer\Buffer\UniformBuffer.cpp" />
+    <ClCompile Include="Source\Renderer\Commands\CommandBuffer.cpp" />
+    <ClCompile Include="Source\Renderer\Commands\CommandPool.cpp" />
+    <ClCompile Include="Source\Renderer\Descriptor\DescriptorSet.cpp" />
+    <ClCompile Include="Source\Renderer\Descriptor\DescriptorsHandler.cpp" />
+    <ClCompile Include="Source\Renderer\Pipeline\ComputePipeline.cpp" />
+    <ClCompile Include="Source\Renderer\Pipeline\GraphicsPipeline.cpp" />
+    <ClCompile Include="Source\Renderer\Pipeline\Shader\Shader.cpp" />
+    <ClCompile Include="Source\Renderer\Renderer.cpp" />
+    <ClCompile Include="Source\Renderer\Renderpass\Renderpass.cpp" />
+    <ClCompile Include="Source\Renderer\Renderpass\Subpass.cpp" />
+    <ClCompile Include="Source\Renderer\Renderpass\Swapchain.cpp" />
+    <ClCompile Include="Source\Renderer\Renderpass\Framebuffer.cpp" />
+    <ClCompile Include="Source\Renderer\RenderStage.cpp" />
+    <ClCompile Include="Source\Renderer\Texture\Texture.cpp" />
     <ClCompile Include="Source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -35,9 +98,14 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Source\Utils\Logging\Logger.cpp" />
+    <ClCompile Include="Source\Utils\Platform\WindowsUtils.cpp" />
+    <ClCompile Include="Source\Utils\Tiner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Source\Utils\Geometry\Color.inl" />
+    <None Include="Source\Utils\Geometry\Vector2.inl" />
+    <None Include="Source\Utils\Geometry\Vector2Int.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -48,26 +116,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -96,24 +164,28 @@
     <OutDir>$(ProjectDir)\Build\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\Build\Obj\$(Platform)\$(Configuration)\</IntDir>
     <GlfwLinkage>static</GlfwLinkage>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)\Build\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\Build\Obj\$(Platform)\$(Configuration)\</IntDir>
     <GlfwLinkage>static</GlfwLinkage>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)\Build\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\Build\Obj\$(Platform)\$(Configuration)\</IntDir>
     <GlfwLinkage>static</GlfwLinkage>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)\Build\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\Build\Obj\$(Platform)\$(Configuration)\</IntDir>
     <GlfwLinkage>static</GlfwLinkage>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,18 +194,21 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x86-Debug\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Dependencies\VulkanMemoryAllocator\Include;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x86-Debug\include</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>EASTL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(EASTL_PATH)\install\x86-Debug\lib;</AdditionalLibraryDirectories>
     </Link>
     <Lib>
       <AdditionalDependencies>vulkan-1.lib</AdditionalDependencies>
@@ -147,18 +222,22 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x64-Debug\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Dependencies\VulkanMemoryAllocator\Include;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x64-Debug\include;$(GLSLANG_PATH)\install\x64-Debug\include</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>EASTL.lib;vulkan-1.lib;glslang.lib;SPIRV.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(VULKAN_SDK)\Lib;$(EASTL_PATH)\install\x64-Debug\lib;$(GLSLANG_PATH)\install\x64-Debug\lib</AdditionalLibraryDirectories>
     </Link>
     <Lib>
       <AdditionalDependencies>vulkan-1.lib</AdditionalDependencies>
@@ -174,20 +253,22 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x86-Release\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Dependencies\VulkanMemoryAllocator\Include;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x86-Release\include</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>EASTL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>vulkan-1.lib</AdditionalDependencies>
@@ -203,20 +284,24 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x64-Release\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Source;$(ProjectDir)Dependencies\VulkanMemoryAllocator\Include;$(VULKAN_SDK)\Include;$(EASTL_PATH)\install\x64-Release\include;$(GLSLANG_PATH)\install\x64-Release\include</AdditionalIncludeDirectories>
       <CompileAsManaged>false</CompileAsManaged>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>EASTL.lib;vulkan-1.lib;glslang.lib;SPIRV.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(VULKAN_SDK)\Lib;$(EASTL_PATH)\install\x64-Release\lib;$(GLSLANG_PATH)\install\x64-Release\lib</AdditionalLibraryDirectories>
     </Link>
     <Lib>
       <AdditionalDependencies>vulkan-1.lib</AdditionalDependencies>
@@ -226,13 +311,13 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="packages\Eigen.3.3.3\build\native\Eigen.targets" Condition="Exists('packages\Eigen.3.3.3\build\native\Eigen.targets')" />
-    <Import Project="packages\glfw.3.2.1.5\build\native\glfw.targets" Condition="Exists('packages\glfw.3.2.1.5\build\native\glfw.targets')" />
+    <Import Project="packages\glfw.3.3.0.1\build\native\glfw.targets" Condition="Exists('packages\glfw.3.3.0.1\build\native\glfw.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Eigen.3.3.3\build\native\Eigen.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Eigen.3.3.3\build\native\Eigen.targets'))" />
-    <Error Condition="!Exists('packages\glfw.3.2.1.5\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\glfw.3.2.1.5\build\native\glfw.targets'))" />
+    <Error Condition="!Exists('packages\glfw.3.3.0.1\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\glfw.3.3.0.1\build\native\glfw.targets'))" />
   </Target>
 </Project>
