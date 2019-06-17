@@ -9,17 +9,16 @@ Memory Allocator
     * debug info/tagging
 
 Application
-Time
 Input
-Screen (Get resolutions, fullscreen mode)
 Math
 Random (Make thread safe)
 Noise
 Curve
 Serialization (binary, json/xml)
+Parallelization (Thread pool, jobs)
 Profiler
+Time
 ECS
-Parallelization
 
 //--GEOMERTRY--
 Color
@@ -32,5 +31,11 @@ Ray
 Rect
 
 //--RENDERER--
-static buffer (clear buffer from client when uploaded)
 debug drawing (use one buffer with all lines for the frame)
+look into resuing samplers (shared_ptr) for textures where possible
+pool upload buffers (or use memory pool)
+transfer queues?
+upload image waits for each image one at a time, could batch them and have many fences waited on for all pending transfers...
+review command buffer pooling (for starters, should pool by queuefamilyindex rather than queuetype, since queuetypes might alias the same queuefamily)
+
+compute shader frustum culling?

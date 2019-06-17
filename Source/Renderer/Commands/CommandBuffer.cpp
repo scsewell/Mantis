@@ -35,6 +35,7 @@ namespace Mantis
     CommandBuffer::~CommandBuffer()
     {
         auto logicalDevice = Renderer::Get()->GetLogicalDevice();
+
         vkFreeCommandBuffers(*logicalDevice, *m_commandPool, 1, &m_commandBuffer);
     }
 
@@ -82,7 +83,7 @@ namespace Mantis
         submitInfo.commandBufferCount = 1;
         submitInfo.pCommandBuffers = &m_commandBuffer;
 
-        VkFenceCreateInfo fenceCreateInfo{};
+        VkFenceCreateInfo fenceCreateInfo = {};
         fenceCreateInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
 
         VkFence fence;

@@ -31,7 +31,12 @@ namespace Mantis
         /// <param name="usage">Usage flag bitmask for the buffer.</param>
         /// <param name="memoryUsage">Memory usage for this buffer.</param>
         /// <param name="data">The data that should be copied to the buffer after creation.</param>
-        Buffer(const VkDeviceSize& size, const VkBufferUsageFlags& usage, const VmaMemoryUsage& memoryUsage, const void* data = nullptr);
+        Buffer(
+            const VkDeviceSize& size,
+            const VkBufferUsageFlags& usage,
+            const VmaMemoryUsage& memoryUsage,
+            const void* data = nullptr
+        );
 
         /// <summary>
         /// Creates a new buffer.
@@ -40,7 +45,12 @@ namespace Mantis
         /// <param name="usage">Usage flag bitmask for the buffer.</param>
         /// <param name="properties">Memory properties for this buffer.</param>
         /// <param name="data">The data that should be copied to the buffer after creation.</param>
-        Buffer(const VkDeviceSize& size, const VkBufferUsageFlags& usage, const VkMemoryPropertyFlags& properties, const void* data = nullptr);
+        Buffer(
+            const VkDeviceSize& size,
+            const VkBufferUsageFlags& usage,
+            const VkMemoryPropertyFlags& properties,
+            const void* data = nullptr
+        );
 
         virtual ~Buffer();
 
@@ -73,13 +83,20 @@ namespace Mantis
         const VmaAllocation& GetAllocation() const { return m_allocation; }
 
     protected:
-        void CreateBuffer(const VkDeviceSize& size, const VkBufferUsageFlags& usage, const VmaAllocationCreateInfo& allocCreateInfo, const void* data);
+        void CreateBuffer(
+            const VkDeviceSize& size,
+            const VkBufferUsageFlags& usage,
+            const VmaAllocationCreateInfo& allocCreateInfo,
+            const void* data
+        );
 
-        VkDeviceSize m_size;
-        VkMemoryPropertyFlags m_memoryFlags;
         VkBuffer m_buffer;
+        
         VmaAllocator m_allocator;
         VmaAllocation m_allocation;
+        VkMemoryPropertyFlags m_memoryFlags;
+        
+        VkDeviceSize m_size;
         MapMode m_mapMode;
     };
 }
