@@ -110,7 +110,7 @@ namespace Mantis
         vkDestroyFence(*logicalDevice, fence, nullptr);
     }
 
-    void CommandBuffer::Submit(VkFence fence, const VkSemaphore& signalSemaphore, const VkSemaphore& waitSemaphore, const VkPipelineStageFlags& waitStage)
+    void CommandBuffer::Submit(const VkFence fence, const VkSemaphore& signalSemaphore, const VkSemaphore& waitSemaphore, const VkPipelineStageFlags& waitStage)
     {
         if (m_recording)
         {

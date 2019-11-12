@@ -1,8 +1,9 @@
+#include "stdafx.h"
 #include "RenderStage.h"
 
 #include "Renderer.h"
 #include "Renderpass/Renderpass.h"
-#include "Texture/ImageDepth.hpp"
+#include "Image/ImageDepth.h"
 #include "Device/Window/Window.h"
 
 #define LOG_TAG MANTIS_TEXT("RenderStage")

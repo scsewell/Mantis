@@ -6,6 +6,10 @@
 
 namespace Mantis
 {
+    struct Vector2;
+    struct Vector2Int;
+    struct Color;
+
     //-------------------------------------------------------------------
     // Load/Store
     //-------------------------------------------------------------------
@@ -22,9 +26,17 @@ namespace Mantis
     {
         return _mm_castpd_ps(_mm_load_sd((double*)&v));
     }
+    MANTIS_FORCE_INLINE __m128 _load(const Vector2* v)
+    {
+        return _mm_castpd_ps(_mm_load_sd((double*)v));
+    }
     MANTIS_FORCE_INLINE __m128 _load(const Color& v)
     {
-        return _mm_loadu_ps((float*)& v);
+        return _mm_loadu_ps((float*)&v);
+    }
+    MANTIS_FORCE_INLINE __m128 _load(const Color* v)
+    {
+        return _mm_loadu_ps((float*)v);
     }
 
     MANTIS_FORCE_INLINE float _store_1(__m128 toStore)

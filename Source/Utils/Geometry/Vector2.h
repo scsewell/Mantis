@@ -7,7 +7,7 @@ namespace Mantis
     /// <summary>
     /// Represents a 2d vector.
     /// </summary>
-    class Vector2
+    struct Vector2
     {
     public:
         float x;

@@ -2,13 +2,14 @@
 
 #include "Mantis.h"
 #include "Swapchain.h"
+#include "Renderer/Image/ImageFramebuffer.h"
+#include "Renderer/Image/ImageDepth.h"
 
 namespace Mantis
 {
-    class ImageDepth;
     class Renderpass;
     class RenderStage;
-
+    
     class Framebuffers :
         public NonCopyable
     {
@@ -19,17 +20,24 @@ namespace Mantis
             const Renderpass& renderPass,
             const Swapchain& swapchain,
             const ImageDepth& depthStencil,
-            const VkSampleCountFlagBits& samples = VK_SAMPLE_COUNT_1_BIT
+            const VkSampleCountFlagBits& samples
         );
 
         ~Framebuffers();
 
-        Image2d* GetAttachment(const uint32_t& index) const { return m_imageAttachments[index].get(); }
+        /// <summary>
+        /// Gets the image attachment for the given framebuffer index.
+        /// </summary>
+        /// <param name="index">The index in the framebuffers.</param>
+        ImageFramebuffer* GetAttachment(const uint32_t& index) const { return m_imageAttachments[index].get(); }
 
+        /// <summary>
+        /// Gets all of the underlying framebuffer instances.
+        /// </summary>
         const eastl::vector<VkFramebuffer>& GetFramebuffers() const { return m_framebuffers; }
 
     private:
-        eastl::vector<eastl::unique_ptr<Image2d>> m_imageAttachments;
+        eastl::vector<eastl::unique_ptr<ImageFramebuffer>> m_imageAttachments;
         eastl::vector<VkFramebuffer> m_framebuffers;
     };
 }

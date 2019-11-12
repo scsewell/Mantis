@@ -172,7 +172,7 @@ namespace Mantis
     String Filesystem::GetExePath()
     {
         wchar_t wBuf[MAX_PATH];
-        DWORD pathLen = GetModuleFileNameW(NULL, wBuf, sizeof(wBuf));
+        DWORD pathLen = GetModuleFileNameW(NULL, wBuf, MAX_PATH);
 
         if (pathLen == 0 || pathLen == sizeof(wBuf))
         {

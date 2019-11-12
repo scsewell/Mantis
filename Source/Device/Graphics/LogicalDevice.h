@@ -32,7 +32,6 @@ namespace Mantis
         /// <summary>
         /// Gets the underlying logical device.
         /// </summary>
-        /// <returns></returns>
         operator const VkDevice& () const { return m_logicalDevice; }
 
         /// <summary>

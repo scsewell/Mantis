@@ -2,8 +2,8 @@
 
 #include "Mantis.h"
 
-#include "Renderer/Commands/CommandBuffer.hpp"
-#include "Renderer/Pipelines/Pipeline.hpp"
+#include "Renderer/Commands/CommandBuffer.h"
+#include "Renderer/Pipeline/Pipeline.h"
 
 namespace Mantis
 {

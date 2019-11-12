@@ -86,7 +86,7 @@ namespace Mantis
             const RenderStage& renderStage,
             const VkFormat& depthFormat,
             const VkFormat& surfaceFormat,
-            const VkSampleCountFlagBits& samples = VK_SAMPLE_COUNT_1_BIT
+            const VkSampleCountFlagBits& samples
         );
 
         /// <summary>

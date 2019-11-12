@@ -31,11 +31,16 @@ Ray
 Rect
 
 //--RENDERER--
-debug drawing (use one buffer with all lines for the frame)
+pool semaphores/queues
+
+Shader cache
+transfer queues
+pool fences/semaphores?
+pool staging buffers (always keep them mapped, share between images and vertex/index/storage etc.)
 look into resuing samplers (shared_ptr) for textures where possible
-pool upload buffers (or use memory pool)
-transfer queues?
-upload image waits for each image one at a time, could batch them and have many fences waited on for all pending transfers...
 review command buffer pooling (for starters, should pool by queuefamilyindex rather than queuetype, since queuetypes might alias the same queuefamily)
+upload image waits for each image one at a time, could batch them and have many fences waited on for all pending transfers...
+pre-generate mipmaps
 
 compute shader frustum culling?
+debug drawing (use one buffer with all lines for the frame)

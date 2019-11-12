@@ -21,10 +21,3 @@
 #define _SILENCE_CXX17_NEGATORS_DEPRECATION_WARNING
 #define EASTL_USER_CONFIG_HEADER "EASTLConfig.h"
 #include <EABase/eabase.h>
-
-// configure the math libary
-#define EIGEN_UNALIGNED_VECTORIZE 1
-#define EIGEN_FAST_MATH  1
-#include <Eigen/Core>
-#include <Eigen/Geometry>
-

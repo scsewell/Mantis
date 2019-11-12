@@ -53,13 +53,6 @@ namespace Mantis
         /// <returns>The format to use.</returns>
         static VkSurfaceFormatKHR ChooseFormat(const eastl::vector<VkSurfaceFormatKHR>& surfaceFormats);
 
-        /// <summary>
-        /// Gets a string representing a format.
-        /// </summary>
-        /// <param name="format">The format to stringify.</param>
-        /// <returns>A new string.</returns>
-        static String StringifyFormat(const VkSurfaceFormatKHR& format);
-
         const Instance* m_instance;
         const PhysicalDevice* m_physicalDevice;
         const Window* m_window;

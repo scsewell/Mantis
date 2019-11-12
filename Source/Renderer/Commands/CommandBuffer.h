@@ -14,8 +14,11 @@ namespace Mantis
         /// <param name="queueType">The queue to run this command buffer on.</param>
         /// <param name="bufferLevel">The buffer level.</param>
         /// <param name="begin">If recording will start right away.</param>
-        explicit CommandBuffer(const QueueType& queueType,
-            const VkCommandBufferLevel& bufferLevel = VK_COMMAND_BUFFER_LEVEL_PRIMARY, const bool& begin = true);
+        explicit CommandBuffer(
+            const QueueType& queueType,
+            const VkCommandBufferLevel& bufferLevel = VK_COMMAND_BUFFER_LEVEL_PRIMARY, 
+            const bool& begin = true
+        );
 
         ~CommandBuffer();
 
@@ -28,6 +31,11 @@ namespace Mantis
         /// Gets the underlying command buffer instance.
         /// </summary>
         const VkCommandBuffer& GetCommandBuffer() const { return m_commandBuffer; }
+
+        /// <summary>
+        /// Gets the queue type this command buffer will execute on.
+        /// </summary>
+        const QueueType& GetQueueType() const { return m_queueType; }
 
         /// <summary>
         /// Checks if this command buffer is recording.
@@ -57,8 +65,12 @@ namespace Mantis
         /// <param name="signalSemaphore">An optional that is signaled once the command buffer has been executed.</param>
         /// <param name="waitSemaphore">An optional semaphore that will waited upon before the command buffer is executed.</param>
         /// <param name="waitStage">The pipeline stages used to wait at when using the wait semaphore.</param>
-        void Submit(VkFence fence = VK_NULL_HANDLE, const VkSemaphore& signalSemaphore = VK_NULL_HANDLE,
-            const VkSemaphore& waitSemaphore = VK_NULL_HANDLE, const VkPipelineStageFlags& waitStage = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT);
+        void Submit(
+            const VkFence fence = VK_NULL_HANDLE,
+            const VkSemaphore& signalSemaphore = VK_NULL_HANDLE,
+            const VkSemaphore& waitSemaphore = VK_NULL_HANDLE,
+            const VkPipelineStageFlags& waitStage = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT
+        );
 
     private:
         eastl::shared_ptr<CommandPool> m_commandPool;

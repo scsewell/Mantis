@@ -1,12 +1,14 @@
 #pragma once
 
 #include "Mantis.h"
+
 #include "Device/Window/Window.h"
 #include "Device/Graphics/Instance.h"
 #include "Device/Graphics/PhysicalDevice.h"
 #include "Device/Graphics/LogicalDevice.h"
 #include "Device/Graphics/Surface.h"
 
+#include "Renderer/Utils/Stringify.h"
 #include "Renderer/Commands/CommandPool.h"
 
 #include "vk_mem_alloc.h"
@@ -49,6 +51,14 @@ namespace Mantis
         /// <returns>The command pool.</returns>
         const eastl::shared_ptr<CommandPool>& GetCommandPool(const QueueType& queueType, const std::thread::id& threadId = std::this_thread::get_id());
 
+        void DestroyBuffer(const VkBuffer& buffer, const VmaAllocation& allocation);
+        void DestroyBufferView(const VkBufferView& view);
+        void DestroyImage(const VkImage& image, const VmaAllocation& allocation);
+        void DestroyImageView(const VkImageView& view);
+        void DestroySampler(const VkSampler& sampler);
+        void DestroyFramebuffer(const VkFramebuffer& framebuffer);
+        void DestroyPipeline(const VkPipeline& pipeline);
+
         /// <summary>
         /// Determines if an operation was successful and logs any appropriate errors.
         /// </summary>
@@ -74,14 +84,13 @@ namespace Mantis
         /// </summary>
         static void Deinit();
 
-        /// <summary>
-        /// Gets a string representing a vulkan result.
-        /// </summary>
-        /// <param name="result">The result to stringify.</param>
-        /// <returns>A new string object.</returns>
-        static String StringifyResult(const VkResult& result);
-
         static eastl::unique_ptr<Renderer> m_renderer;
+
+        Renderer();
+        ~Renderer();
+
+        void CreateLogicalDevice(const Surface* surface);
+        void CreateAllocator();
 
         /// <summary>
         /// Gets a command pool for a thread for a given queue.
@@ -90,12 +99,6 @@ namespace Mantis
         /// <param name="threadId">The current thread.</param>
         /// <returns>A command pool.</returns>
         const eastl::shared_ptr<CommandPool>& GetCommandPool(eastl::map<std::thread::id, eastl::shared_ptr<CommandPool>>& pools, const std::thread::id& threadId);
-
-        Renderer();
-        ~Renderer();
-
-        void CreateLogicalDevice(const Surface* surface);
-        void CreateAllocator();
 
         eastl::unique_ptr<Instance> m_instance;
         eastl::unique_ptr<PhysicalDevice> m_physicalDevice;

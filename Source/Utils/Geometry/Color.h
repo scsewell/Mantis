@@ -7,7 +7,7 @@ namespace Mantis
     /// <summary>
     /// Represents a RGBA color.
     /// </summary>
-    class Color
+    struct Color
     {
     public:
         static constexpr Color Clear();

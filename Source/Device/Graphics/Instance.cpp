@@ -93,8 +93,8 @@ namespace Mantis
         }
         Logger::InfoT(LOG_TAG, layers);
 
-        // Sets up the layers
 #if defined(MANTIS_DEBUG)
+        // Sets up the layers
         for (const auto& layerName : VALIDATION_LAYERS)
         {
             bool layerFound = false;
@@ -110,7 +110,7 @@ namespace Mantis
 
             if (!layerFound)
             {
-                Logger::WarningTF(LOG_TAG, "Validation layer not found: '%s'", layerName);
+                Logger::WarningTF(LOG_TAG, "Validation layer not found: \"%s\"", layerName);
                 continue;
             }
 

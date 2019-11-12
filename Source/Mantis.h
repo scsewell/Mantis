@@ -13,7 +13,11 @@
 #include <EASTL/string.h>
 #include <EASTL/array.h>
 #include <EASTL/vector.h>
+#include <EASTL/queue.h>
+#include <EASTL/stack.h>
 #include <EASTL/map.h>
+#include <EASTL/unordered_set.h>
+#include <EASTL/unordered_map.h>
 #include <EASTL/vector_multimap.h>
 #include <EASTL/algorithm.h>
 #include <EASTL/functional.h>

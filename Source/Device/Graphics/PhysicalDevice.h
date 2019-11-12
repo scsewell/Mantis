@@ -24,6 +24,11 @@ namespace Mantis
         const VkPhysicalDevice& GetPhysicalDevice() const { return m_physicalDevice; }
 
         /// <summary>
+        /// The name of the device.
+        /// </summary>
+        const char* GetName() const { return &m_properties.deviceName[0]; }
+
+        /// <summary>
         /// Gets the device properties.
         /// </summary>
         const VkPhysicalDeviceProperties& GetProperties() const { return m_properties; }
@@ -53,6 +58,15 @@ namespace Mantis
         /// </summary>
         /// <param name="memoryTypeBit">The type of memory.</param>
         VkMemoryPropertyFlags PhysicalDevice::GetMemoryPropertyFlags(const uint32_t& memoryTypeBit) const;
+
+        /// <summary>
+        /// Selects the first format which meets the provided requirements.
+        /// </summary>
+        /// <param name="candidates">The formats to check for support.</param>
+        /// <param name="tiling">The required tiling.</param>
+        /// <param name="features">The features that must be supported by the format.</param>
+        /// <returns>The first supported format, or VK_FORMAT_UNDEFINED if none is available.</returns>
+        VkFormat FindSupportedFormat(const eastl::vector<VkFormat>& candidates, const VkImageTiling& tiling, const VkFormatFeatureFlags& features) const;
 
     private:
         /// <summary>

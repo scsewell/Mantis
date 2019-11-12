@@ -13,7 +13,9 @@
         static const bool enable = true;    \
     };
 
-#define HAS_FLAG(flags, value) ((flags & value) == value)
+#define HAS_FLAGS(flags, value) ((flags & (value)) == (value))
+#define HAS_ANY_FLAG(flags, value) ((flags & (value)) != 0)
+#define HAS_NO_FLAG(flags, value) ((flags & (value)) == 0)
 
 template<typename TEnum>
 struct EnableBitMaskOperators

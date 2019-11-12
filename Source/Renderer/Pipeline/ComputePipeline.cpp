@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "ComputePipeline.h"
 
 #include "Renderer/Renderer.h"

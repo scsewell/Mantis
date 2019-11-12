@@ -182,6 +182,26 @@ namespace Mantis
         Logger::InfoTF(LOG_TAG, "Unable to find memory type!");
     }
 
+    VkFormat PhysicalDevice::FindSupportedFormat(const eastl::vector<VkFormat>& candidates, const VkImageTiling& tiling, const VkFormatFeatureFlags& features) const
+    {
+        for (VkFormat format : candidates)
+        {
+            VkFormatProperties props;
+            vkGetPhysicalDeviceFormatProperties(m_physicalDevice, format, &props);
+
+            if (tiling == VK_IMAGE_TILING_LINEAR && (props.linearTilingFeatures & features) == features)
+            {
+                return format;
+            }
+            else if (tiling == VK_IMAGE_TILING_OPTIMAL && (props.optimalTilingFeatures & features) == features)
+            {
+                return format;
+            }
+        }
+
+        return VK_FORMAT_UNDEFINED;
+    }
+
     void PhysicalDevice::LogDeviceInfo(const VkPhysicalDeviceProperties& physicalDeviceProperties, const eastl::vector<VkExtensionProperties>& extensionProperties)
     {
         String device = String();

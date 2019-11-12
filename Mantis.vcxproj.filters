@@ -55,6 +55,12 @@
     <Filter Include="Source\Renderer\Image">
       <UniqueIdentifier>{66575a83-fea8-4df6-9585-1ca301012e1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Renderer\RenderGraph">
+      <UniqueIdentifier>{c2e7fe95-2685-4d5d-83eb-1eb59effabde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Renderer\Utils">
+      <UniqueIdentifier>{8047b755-e61c-430a-8dd5-76798ab725ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Platform.h">
@@ -177,9 +183,6 @@
     <ClInclude Include="Source\Utils\Geometry\Color.h">
       <Filter>Source\Utils\Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Renderer\Renderpass\Renderpass.h">
-      <Filter>Source\Renderer\Renderpass</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Renderer\Renderpass\Attachment.h">
       <Filter>Source\Renderer\Renderpass</Filter>
     </ClInclude>
@@ -188,6 +191,57 @@
     </ClInclude>
     <ClInclude Include="Source\Renderer\Image\Image.h">
       <Filter>Source\Renderer\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Image\Image2D.h">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Image\ImageDepth.h">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Image\ImageFramebuffer.h">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\RendererConfig.h">
+      <Filter>Source\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Renderpass\RenderpassAlt.h">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\RenderGraph\RenderPass.h">
+      <Filter>Source\Renderer\RenderGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\RenderGraph\RenderGraph.h">
+      <Filter>Source\Renderer\RenderGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\RenderGraph\RenderPassInfo.h">
+      <Filter>Source\Renderer\RenderGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Utils\Stringify.h">
+      <Filter>Source\Renderer\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Image\Sampler.h">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Utils\Nameable.h">
+      <Filter>Source\Renderer\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Utils\Format.h">
+      <Filter>Source\Renderer\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Buffer\BufferView.h">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Image\ImageView.h">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Utils\Fence.h">
+      <Filter>Source\Renderer\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Renderer\Utils\Semaphore.h">
+      <Filter>Source\Renderer\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Pool.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -272,14 +326,44 @@
     <ClCompile Include="Source\Renderer\RenderStage.cpp">
       <Filter>Source\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Renderer\Renderpass\Renderpass.cpp">
-      <Filter>Source\Renderer\Renderpass</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Renderer\Renderpass\Subpass.cpp">
       <Filter>Source\Renderer\Renderpass</Filter>
     </ClCompile>
     <ClCompile Include="Source\Renderer\Image\Image.cpp">
       <Filter>Source\Renderer\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Image\Image2D.cpp">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Image\ImageDepth.cpp">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Image\ImageFramebuffer.cpp">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\RenderGraph\RenderGraph.cpp">
+      <Filter>Source\Renderer\RenderGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Renderpass\RenderpassAlt.cpp">
+      <Filter>Source\Renderer\Renderpass</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\RenderGraph\RenderPass.cpp">
+      <Filter>Source\Renderer\RenderGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Image\Sampler.cpp">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Buffer\BufferView.cpp">
+      <Filter>Source\Renderer\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Image\ImageView.cpp">
+      <Filter>Source\Renderer\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Utils\Fence.cpp">
+      <Filter>Source\Renderer\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Renderer\Utils\Semaphore.cpp">
+      <Filter>Source\Renderer\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

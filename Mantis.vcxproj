@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,6 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Renderer\Buffer\BufferView.h" />
+    <ClInclude Include="Source\Renderer\Image\ImageView.h" />
+    <ClInclude Include="Source\Renderer\Image\Sampler.h" />
+    <ClInclude Include="Source\Renderer\RenderGraph\RenderPass.h" />
+    <ClInclude Include="Source\Renderer\RendererConfig.h" />
+    <ClInclude Include="Source\Renderer\RenderGraph\RenderGraph.h" />
+    <ClInclude Include="Source\Renderer\RenderGraph\RenderPassInfo.h" />
+    <ClInclude Include="Source\Renderer\Utils\Fence.h" />
+    <ClInclude Include="Source\Renderer\Utils\Format.h" />
+    <ClInclude Include="Source\Renderer\Utils\Nameable.h" />
+    <ClInclude Include="Source\Renderer\Utils\Semaphore.h" />
+    <ClInclude Include="Source\Renderer\Utils\Stringify.h" />
     <ClInclude Include="Source\Renderer\Renderpass\Attachment.h" />
     <ClInclude Include="Source\Device\Graphics\Instance.h" />
     <ClInclude Include="Source\Device\Graphics\LogicalDevice.h" />
@@ -40,7 +52,7 @@
     <ClInclude Include="Source\Renderer\Pipeline\Shader\Shader.h" />
     <ClInclude Include="Source\Renderer\Renderer.h" />
     <ClInclude Include="Source\Renderer\Renderpass\Framebuffer.h" />
-    <ClInclude Include="Source\Renderer\Renderpass\Renderpass.h" />
+    <ClInclude Include="Source\Renderer\Renderpass\RenderpassAlt.h" />
     <ClInclude Include="Source\Renderer\Renderpass\Subpass.h" />
     <ClInclude Include="Source\Renderer\Renderpass\Swapchain.h" />
     <ClInclude Include="Source\Renderer\RenderStage.h" />
@@ -62,9 +74,14 @@
     <ClInclude Include="Source\Utils\Logging\Logger.h" />
     <ClInclude Include="Source\Utils\NonCopyable.h" />
     <ClInclude Include="Source\Utils\Platform\WindowsUtils.h" />
+    <ClInclude Include="Source\Utils\Pool.h" />
     <ClInclude Include="Source\Utils\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Renderer\Buffer\BufferView.cpp" />
+    <ClCompile Include="Source\Renderer\Image\ImageView.cpp" />
+    <ClCompile Include="Source\Renderer\Image\Sampler.cpp" />
+    <ClCompile Include="Source\Renderer\RenderGraph\RenderPass.cpp" />
     <ClCompile Include="Source\Device\Graphics\Instance.cpp" />
     <ClCompile Include="Source\Device\Graphics\LogicalDevice.cpp" />
     <ClCompile Include="Source\Device\Graphics\PhysicalDevice.cpp" />
@@ -85,12 +102,15 @@
     <ClCompile Include="Source\Renderer\Pipeline\GraphicsPipeline.cpp" />
     <ClCompile Include="Source\Renderer\Pipeline\Shader\Shader.cpp" />
     <ClCompile Include="Source\Renderer\Renderer.cpp" />
-    <ClCompile Include="Source\Renderer\Renderpass\Renderpass.cpp" />
+    <ClCompile Include="Source\Renderer\RenderGraph\RenderGraph.cpp" />
+    <ClCompile Include="Source\Renderer\Renderpass\RenderpassAlt.cpp" />
     <ClCompile Include="Source\Renderer\Renderpass\Subpass.cpp" />
     <ClCompile Include="Source\Renderer\Renderpass\Swapchain.cpp" />
     <ClCompile Include="Source\Renderer\Renderpass\Framebuffer.cpp" />
     <ClCompile Include="Source\Renderer\RenderStage.cpp" />
     <ClCompile Include="Source\Renderer\Image\Image.cpp" />
+    <ClCompile Include="Source\Renderer\Utils\Fence.cpp" />
+    <ClCompile Include="Source\Renderer\Utils\Semaphore.cpp" />
     <ClCompile Include="Source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -112,32 +132,32 @@
     <ProjectGuid>{07C8D885-E323-4E1E-A859-EAB5FD2CE051}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Mantis</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -207,7 +227,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>EASTL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>EASTL.lib;vulkan-1.lib;glslang.lib;SPIRV.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(EASTL_PATH)\install\x86-Debug\lib;</AdditionalLibraryDirectories>
     </Link>
     <Lib>
@@ -268,7 +288,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>EASTL.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>EASTL.lib;vulkan-1.lib;glslang.lib;SPIRV.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
       <AdditionalDependencies>vulkan-1.lib</AdditionalDependencies>
@@ -310,14 +330,12 @@
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\Eigen.3.3.3\build\native\Eigen.targets" Condition="Exists('packages\Eigen.3.3.3\build\native\Eigen.targets')" />
     <Import Project="packages\glfw.3.3.0.1\build\native\glfw.targets" Condition="Exists('packages\glfw.3.3.0.1\build\native\glfw.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Eigen.3.3.3\build\native\Eigen.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Eigen.3.3.3\build\native\Eigen.targets'))" />
     <Error Condition="!Exists('packages\glfw.3.3.0.1\build\native\glfw.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\glfw.3.3.0.1\build\native\glfw.targets'))" />
   </Target>
 </Project>

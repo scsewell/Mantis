@@ -1,4 +1,5 @@
-#include "Renderpass.h"
+#include "stdafx.h"
+#include "RenderpassAlt.h"
 
 #include "Subpass.h"
 #include "Renderer/Renderer.h"

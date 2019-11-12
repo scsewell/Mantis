@@ -2,6 +2,8 @@
 
 #include "Mantis.h"
 
+#include "Renderer/Utils/Semaphore.h"
+
 namespace Mantis
 {
     class Window;
@@ -24,9 +26,9 @@ namespace Mantis
         /// <summary>
         /// Acquires the next image in the swapchain into the internal acquired image. The function will always wait until the next image has been acquired by setting timeout to UINT64_MAX.
         /// </summary>
-        /// <param name="presentCompleteSemaphore">Anoptional semaphore that is signaled when the image is ready for use.</param>
+        /// <param name="presentCompleteSemaphore">An optional semaphore that is signaled when the image is ready for use.</param>
         /// <returns>Result of the image acquisition.</returns>
-        VkResult AcquireNextImage(const VkSemaphore& presentCompleteSemaphore = VK_NULL_HANDLE);
+        VkResult AcquireNextImage(const Semaphore* presentCompleteSemaphore = nullptr);
 
         /// <summary>
         /// Queue an image for presentation using the internal acquired image for queue presentation.
@@ -34,7 +36,7 @@ namespace Mantis
         /// <param name="presentQueue">Presentation queue for presenting the image.</param>
         /// <param name="waitSemaphore">An optional semaphore that is waited on before the image is presented.</param>
         /// <returns>Result of the queue presentation.</returns>
-        VkResult QueuePresent(const VkQueue& presentQueue, const VkSemaphore& waitSemaphore = VK_NULL_HANDLE);
+        VkResult QueuePresent(const VkQueue& presentQueue, const Semaphore* waitSemaphore = nullptr);
 
         /// <summary>
         /// Gets the underlying swapchain.

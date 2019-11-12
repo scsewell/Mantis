@@ -256,11 +256,17 @@ namespace Mantis
         }
     }
 
-    VkResult Swapchain::AcquireNextImage(const VkSemaphore& presentCompleteSemaphore)
+    VkResult Swapchain::AcquireNextImage(const Semaphore* presentCompleteSemaphore)
     {
         auto logicalDevice = Renderer::Get()->GetLogicalDevice();
 
-        VkResult result = vkAcquireNextImageKHR(*logicalDevice, m_swapchain, std::numeric_limits<uint64_t>::max(), presentCompleteSemaphore, VK_NULL_HANDLE, &m_activeImageIndex);
+		VkSemaphore semaphore = VK_NULL_HANDLE;
+		if (presentCompleteSemaphore)
+		{
+			semaphore = presentCompleteSemaphore->GetSemaphore();
+		}
+
+        VkResult result = vkAcquireNextImageKHR(*logicalDevice, m_swapchain, std::numeric_limits<uint64_t>::max(), semaphore, VK_NULL_HANDLE, &m_activeImageIndex);
 
         switch (result)
         {
@@ -277,15 +283,19 @@ namespace Mantis
         return result;
     }
 
-    VkResult Swapchain::QueuePresent(const VkQueue& presentQueue, const VkSemaphore& waitSemaphore)
+    VkResult Swapchain::QueuePresent(const VkQueue& presentQueue, const Semaphore* waitSemaphore)
     {
         VkPresentInfoKHR presentInfo = {};
         presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
-        presentInfo.waitSemaphoreCount = 1;
-        presentInfo.pWaitSemaphores = &waitSemaphore;
         presentInfo.swapchainCount = 1;
         presentInfo.pSwapchains = &m_swapchain;
         presentInfo.pImageIndices = &m_activeImageIndex;
+
+		if (waitSemaphore)
+		{
+			presentInfo.waitSemaphoreCount = 1;
+			presentInfo.pWaitSemaphores = &waitSemaphore->GetSemaphore();
+		}
 
         return vkQueuePresentKHR(presentQueue, &presentInfo);
     }

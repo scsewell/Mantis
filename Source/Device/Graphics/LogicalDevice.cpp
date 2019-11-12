@@ -13,10 +13,10 @@ namespace Mantis
         m_physicalDevice(physicalDevice),
         m_logicalDevice(VK_NULL_HANDLE),
         m_supportedQueues(0),
-        m_graphicsFamily(0),
-        m_presentFamily(0),
-        m_computeFamily(0),
-        m_transferFamily(0),
+        m_graphicsFamily(eastl::numeric_limits<uint32_t>::max()),
+        m_presentFamily(eastl::numeric_limits<uint32_t>::max()),
+        m_computeFamily(eastl::numeric_limits<uint32_t>::max()),
+        m_transferFamily(eastl::numeric_limits<uint32_t>::max()),
         m_graphicsQueue(VK_NULL_HANDLE),
         m_presentQueue(VK_NULL_HANDLE),
         m_computeQueue(VK_NULL_HANDLE),
@@ -44,54 +44,42 @@ namespace Mantis
         eastl::vector<VkQueueFamilyProperties> queueFamilies(queueFamilyCount);
         vkGetPhysicalDeviceQueueFamilyProperties(*m_physicalDevice, &queueFamilyCount, queueFamilies.data());
 
-        int32_t graphicsFamily = -1;
-        int32_t presentFamily = -1;
-        int32_t computeFamily = -1;
-        int32_t transferFamily = -1;
-
         for (uint32_t i = 0; i < queueFamilyCount; i++)
         {
-            // check for graphics support
-            if (queueFamilies[i].queueFlags & VK_QUEUE_GRAPHICS_BIT)
+            VkQueueFlags flags = queueFamilies[i].queueFlags;
+
+            // get the first queue that supports graphics
+            if ((flags & VK_QUEUE_GRAPHICS_BIT) && m_graphicsFamily == eastl::numeric_limits<uint32_t>::max())
             {
-                graphicsFamily = i;
                 m_graphicsFamily = i;
                 m_supportedQueues |= VK_QUEUE_GRAPHICS_BIT;
             }
 
-            // check for presentation support
+            // get the first queue that supports presentation
             VkBool32 presentSupport = VK_FALSE;
             vkGetPhysicalDeviceSurfaceSupportKHR(*m_physicalDevice, i, *surface, &presentSupport);
 
-            if (queueFamilies[i].queueCount > 0 && presentSupport)
+            if ((queueFamilies[i].queueCount > 0 && presentSupport) && m_presentFamily == eastl::numeric_limits<uint32_t>::max())
             {
-                presentFamily = i;
                 m_presentFamily = i;
             }
 
-            // check for compute support
-            if (queueFamilies[i].queueFlags & VK_QUEUE_COMPUTE_BIT)
+            // get the first queue that supports compute
+            if ((flags & VK_QUEUE_COMPUTE_BIT) && m_computeFamily == eastl::numeric_limits<uint32_t>::max())
             {
-                computeFamily = i;
                 m_computeFamily = i;
                 m_supportedQueues |= VK_QUEUE_COMPUTE_BIT;
             }
 
-            // check for transfer support
-            if (queueFamilies[i].queueFlags & VK_QUEUE_TRANSFER_BIT)
+            // get the first queue with transfer support, but prefer dedicated ones
+            if ((flags & VK_QUEUE_TRANSFER_BIT) && (m_transferFamily == eastl::numeric_limits<uint32_t>::max() || flags == VK_QUEUE_TRANSFER_BIT))
             {
-                transferFamily = i;
                 m_transferFamily = i;
                 m_supportedQueues |= VK_QUEUE_TRANSFER_BIT;
             }
-
-            if (graphicsFamily != -1 && presentFamily != -1 && computeFamily != -1 && transferFamily != -1)
-            {
-                break;
-            }
         }
 
-        if (graphicsFamily == -1)
+        if (m_graphicsFamily == eastl::numeric_limits<uint32_t>::max())
         {
             Logger::ErrorT(LOG_TAG, "Failed to find queue family supporting VK_QUEUE_GRAPHICS_BIT!");
         }
@@ -124,6 +112,8 @@ namespace Mantis
             computeQueueCreateInfo.queueCount = 1;
             computeQueueCreateInfo.pQueuePriorities = queuePriorities;
             queueCreateInfos.emplace_back(computeQueueCreateInfo);
+
+            Logger::InfoT(LOG_TAG, "Creating dedicated compute queue.");
         }
         else
         {
@@ -138,6 +128,8 @@ namespace Mantis
             transferQueueCreateInfo.queueCount = 1;
             transferQueueCreateInfo.pQueuePriorities = queuePriorities;
             queueCreateInfos.emplace_back(transferQueueCreateInfo);
+            
+            Logger::InfoT(LOG_TAG, "Creating dedicated transfer queue.");
         }
         else
         {
@@ -200,6 +192,15 @@ namespace Mantis
         else
         {
             Logger::WarningT(LOG_TAG, "Selected GPU does not support sampler anisotropy!");
+        }
+
+        if (deviceFeatures.imageCubeArray)
+        {
+            enabledFeatures.imageCubeArray = VK_TRUE;
+        }
+        else
+        {
+            Logger::WarningT(LOG_TAG, "Selected GPU does not support cube image arrays!");
         }
 
         if (deviceFeatures.textureCompressionBC)

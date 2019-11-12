@@ -4,7 +4,7 @@
 
 namespace Mantis
 {
-    class Vector2Int
+    struct Vector2Int
     {
     public:
         int x;

@@ -29,9 +29,11 @@ namespace Mantis
             switch (attachment.GetType())
             {
                 case Attachment::Type::Image:
-                    m_imageAttachments.emplace_back(std::make_unique<Image2d>(extent, nullptr, attachment.GetFormat(), VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL,
-                        VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT | VK_IMAGE_USAGE_STORAGE_BIT, VK_FILTER_LINEAR, VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_EDGE, attachmentSamples));
+                {
+                    ImageFramebuffer* image = ImageFramebuffer::Create2D({extent.x, extent.y}, attachment.GetFormat(), attachmentSamples, 1);
+                    m_imageAttachments.emplace_back(eastl::unique_ptr<ImageFramebuffer>(image));
                     break;
+                }
                 case Attachment::Type::Depth:
                     m_imageAttachments.emplace_back(nullptr);
                     break;
